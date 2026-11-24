@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoPaso | Calzado Deportivo Sostenible</title>
+  <style>
+    /* Reset básico */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+
+    body {
+      background-color: #eef3f0;
+      color: #1f2e28;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .shop-container {
+      max-width: 1000px;
+      width: 100%;
+      background-color: #ffffff;
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 6px 24px rgba(31, 46, 40, 0.07);
+    }
+
+    /* 1. Header con acciones */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #f0f5f2;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: #3d5a35;
+    }
+
+    /* <--- ESTILO PARA LA IMAGEN DE TU LOGOTIPO ---> */
+    .logo-img {
+      height: 55px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #3d5a35;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #4a90b8;
+    }
+
+    .user-actions {
+      display: flex;
+      gap: 14px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    /* 2. Banner / Héroe (Estilo Split con degradado natural) */
+    .hero-banner {
+      background: linear-gradient(120deg, #3d5a35 0%, #5c7d4e 55%, #78b3d1 100%);
+      border-radius: 14px;
+      padding: 42px;
+      margin: 24px 0 32px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #ffffff;
+    }
+
+    .hero-text {
+      max-width: 540px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background-color: rgba(255, 255, 255, 0.2);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    .hero-text h1 {
+      font-size: 2rem;
+      color: #ffffff;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .hero-text p {
+      color: #e8f3ec;
+      font-size: 1rem;
+      margin-bottom: 22px;
+      line-height: 1.5;
+    }
+
+    .btn-primary {
+      background-color: #ffffff;
+      color: #3d5a35;
+      border: none;
+      padding: 11px 24px;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s, background-color 0.2s;
+    }
+
+    .btn-primary:hover {
+      background-color: #f0f8ff;
+      transform: translateY(-2px);
+    }
+
+    .hero-image {
+      font-size: 80px;
+      filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.18));
+    }
+
+    /* Títulos de Secciones */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #2c4226;
+      margin-bottom: 16px;
+    }
+
+    /* 3. Categorías (4 Columnas con borde sutil) */
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      margin-bottom: 32px;
+    }
+
+    .category-card {
+      padding: 18px;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.2s;
+    }
+
+    .category-card:hover {
+      transform: translateY(-3px);
+      border-color: #8cb89f;
+    }
+
+    .category-card span.icon {
+      font-size: 28px;
+    }
+
+    .category-card span.label {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #1f2e28;
+    }
+
+    .cat-1 { background-color: #e6f4fa; } /* Azul glaciar */
+    .cat-2 { background-color: #eaf2e3; } /* Verde oliva claro */
+    .cat-3 { background-color: #e3f5ec; } /* Menta suave */
+    .cat-4 { background-color: #f5f2eb; } /* Lino natural */
+
+    /* 4. Productos Destacados */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .product-card {
+      background-color: #ffffff;
+      border-radius: 12px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      border: 1px solid #dfe8e3;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .product-card:hover {
+      box-shadow: 0 8px 18px rgba(61, 90, 53, 0.12);
+      transform: translateY(-2px);
+    }
+
+    .product-image-placeholder {
+      width: 100%;
+      height: 105px;
+      background: linear-gradient(135deg, #e6f4fa, #eaf2e3);
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 38px;
+      overflow: hidden;
+    }
+
+    .product-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #3d5a35;
+      background-color: #eaf2e3;
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+
+    .product-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #1f2e28;
+    }
+
+    .product-price {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #4a90b8;
+    }
+
+    /* Responsivo */
+    @media (max-width: 768px) {
+      .categories-grid, .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .hero-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="shop-container">
+    <!-- Header -->
+    <header>
+      <div class="logo">
+        <img src="EcoPasoLogo.jpg" alt="Logo EcoPaso" class="logo-img">
+      </div>
+
+      <div class="nav-actions">
+        <nav class="nav-links">
+          <a href="#">Novedades</a>
+          <a href="#">Catalogo</a>
+          <a href="#">Pedidos</a>
+          <a href="#">contacto</a>
+        </nav>
+        <div class="user-actions">
+          <span>🔍</span>
+          <span>🛒</span>
+          <span>👤</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Banner / Héroe -->
+    <section class="hero-banner">
+      <div class="hero-text">
+        <span class="hero-badge">🌿 NUEVA COLECCIÓN 2026</span>
+        <h1>Cada paso cuenta para el planeta</h1>
+        <p>Diseño ergonómico de alto rendimiento creado con botellas recicladas del océano y caucho natural.</p>
+        <button class="btn-primary">Ver catálogo</button>
+      </div>
+      <div class="logo">
+        <img src="EcoPasoLogo.jpg" alt="Logo EcoPaso" class="logo-img">
+      </div>
+    </section>
+
+    <!-- Categorías de Productos -->
+    <section>
+      <h2 class="section-title">Explora por Estilo</h2>
+      <div class="categories-grid">
+        <div class="category-card cat-2">
+          <span class="icon">🌲</span>
+          <span class="label">Senderismo</span>
+        </div>
+        <div class="category-card cat-3">
+          <span class="icon">🌊</span>
+          <span class="label">Edición Océano</span>
+        </div>
+        <div class="category-card cat-4">
+          <span class="icon">🎒</span>
+          <span class="label">Equipamiento</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Productos Destacados -->
+    <section>
+      <h2 class="section-title">Los Más Vendidos</h2>
+      <div class="products-grid">
+        <div class="product-card">
+          <div class="product-image-placeholder">👟</div>
+          <span class="product-tag">Algas + PET</span>
+          <span class="product-title">EcoPaso Cumbre</span>
+          <span class="product-price">$94.00</span>
+        </div>
+        <div class="product-card">
+          <div class="product-image-placeholder">👟</div>
+          <span class="product-tag">Algodón Orgánico</span>
+          <span class="product-title">EcoPaso Nube</span>
+          <span class="product-price">$86.00</span>
+        </div>
+        <div class="product-card">
+          <div class="product-image-placeholder">👟</div>
+          <span class="product-tag">Caucho Natural</span>
+          <span class="product-title">EcoPaso Sendero</span>
+          <span class="product-price">$105.00</span>
+        </div>
+        <div class="product-card">
+          <div class="product-image-placeholder">👟</div>
+          <span class="product-tag">100% Vegano</span>
+          <span class="product-title">EcoPaso Valle</span>
+          <span class="product-price">$89.00</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+</body>
+</html>

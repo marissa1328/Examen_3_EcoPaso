@@ -1,0 +1,26 @@
+@startuml
+start
+:Ingresar Usuario;
+:Validar Usuario;
+
+if({¿Es valido?}) then(SI)
+    :Acceder Sistema;
+    : Mostrar catalogo;
+    : Muestra calzado;
+ if({¿Quieres comprarlo?}) then(SI)
+    :Agregar al acarrito;
+    
+
+else(NO)
+   :Canselar ;
+   
+endif
+else (NO)
+    :Mostrar Error;
+    :Reintentar;
+endif
+
+stop
+
+@enduml
+
