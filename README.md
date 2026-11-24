@@ -1,2 +1,2 @@
 # Examen_3_EcoPaso
-se  
+En este espacio se subirán los archivos correspondientes con el examen 3 
